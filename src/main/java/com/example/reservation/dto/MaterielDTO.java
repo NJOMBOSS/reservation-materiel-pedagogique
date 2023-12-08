@@ -18,11 +18,14 @@ public class MaterielDTO {
 
     private  int quantite;
 
+    private boolean estEnEtat=true;
+
     public static MaterielDTO fromEntity(Materiel materiel){
         return MaterielDTO.builder()
                 .id(materiel.getId())
                 .libelle(materiel.getLibelle())
                 .quantite(materiel.getQuantite())
+                .estEnEtat(materiel.isEstEnEtat())
                 .build();
     }
 
@@ -31,6 +34,7 @@ public class MaterielDTO {
                 .id(materielDTO.getId())
                 .libelle(materielDTO.getLibelle())
                 .quantite(materielDTO.getQuantite())
+                .estEnEtat(materielDTO.isEstEnEtat())
                 .build();
     }
 

@@ -22,6 +22,8 @@ public class Materiel {
 
     private  int quantite;
 
+    private boolean estEnEtat=true;
+
     @OneToMany(mappedBy = "materiel")
     Set<Reservation> reservations;
 }
