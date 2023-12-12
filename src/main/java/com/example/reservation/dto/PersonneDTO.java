@@ -9,7 +9,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 @Builder
 @Getter
@@ -23,7 +24,7 @@ public class PersonneDTO {
 
     private String prenom;
 
-    private Date dateNaissance;
+    private LocalDate dateNaissance;
 
     private char sexe;
 

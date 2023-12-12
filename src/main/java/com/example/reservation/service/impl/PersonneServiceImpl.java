@@ -2,6 +2,7 @@ package com.example.reservation.service.impl;
 
 import com.example.reservation.dto.PersonneDTO;
 import com.example.reservation.entite.Personne;
+import com.example.reservation.exceptions.ObjectValidationException;
 import com.example.reservation.repository.PersonneRepository;
 import com.example.reservation.service.PersonneService;
 import com.example.reservation.validators.ObjectsValidator;
@@ -10,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -25,6 +28,11 @@ public class PersonneServiceImpl implements PersonneService {
     public Integer save(PersonneDTO personneDTO) {
         validator.validate(personneDTO);
         Personne personne = PersonneDTO.toEntity(personneDTO);
+        Optional<Personne> p = personneRepository.findByNomAndPrenomAndDateNaissance(personne.getNom(), personne.getPrenom(), personne.getDateNaissance());
+
+        if(p.isPresent()){
+            throw new EntityNotFoundException("Cette Personne existe déjà !!!");
+        }
         return personneRepository.save(personne).getId();
     }
 
@@ -32,7 +40,7 @@ public class PersonneServiceImpl implements PersonneService {
     public PersonneDTO findById(Integer id) {
         return personneRepository.findById(id)
                 .map(PersonneDTO::fromEntity)
-                .orElseThrow(()-> new EntityNotFoundException("Aucune personne n'a été trouvé avec  cet ID" + id));
+                .orElseThrow(()-> new EntityNotFoundException("Aucune personne n'a été trouvé avec  cet ID: " + id));
     }
 
     @Override
@@ -46,8 +54,11 @@ public class PersonneServiceImpl implements PersonneService {
 
     @Override
     public void delete(Integer id) {
-        personneRepository.findById(id)
-                .orElseThrow(()-> new EntityNotFoundException("Cette personne ne peut être supprimé car, elle n'hesiste pas"));
+       Optional<Personne>  personne = personneRepository.findById(id);
+       if (personne.isEmpty()){
+           throw new EntityNotFoundException("Impossible d'effectuer la suppression car, Cette personne n'existe pas !!!");
+       }
+       personneRepository.deleteById(id);
 
     }
 }

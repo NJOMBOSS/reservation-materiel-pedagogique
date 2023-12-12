@@ -1,0 +1,26 @@
+###
+POST http://localhost:8080/api/personnes
+Content-Type: application/json
+
+{
+ "nom": "FONKE TCHETCHE",
+ "prenom": "Eric Martial",
+ "dateNaissance": "1982-08-22",
+ "sexe": "M",
+ "filiere": "CS2I",
+ "niveau": "5",
+ "role": "ETUDIANT"
+}
+
+###
+GET http://localhost:8080/api/personnes/
+Content-Type: application/json
+
+###
+GET http://localhost:8080/api/personnes/1
+Content-Type: application/json
+
+
+###
+DELETE http://localhost:8080/api/personnes/1
+Content-Type: application/json

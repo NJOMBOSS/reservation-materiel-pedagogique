@@ -4,7 +4,7 @@ import com.example.reservation.enums.TypePersonne;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Builder
@@ -24,7 +24,7 @@ public class Personne {
 
     private String prenom;
 
-    private Date dateNaissance;
+    private LocalDate dateNaissance;
 
     private char sexe;
 
