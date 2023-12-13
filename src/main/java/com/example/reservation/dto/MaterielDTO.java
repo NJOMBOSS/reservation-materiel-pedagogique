@@ -18,7 +18,7 @@ public class MaterielDTO {
 
     private  int quantite;
 
-    private boolean estEnEtat=true;
+    private boolean estEnEtat;
 
     public static MaterielDTO fromEntity(Materiel materiel){
         return MaterielDTO.builder()

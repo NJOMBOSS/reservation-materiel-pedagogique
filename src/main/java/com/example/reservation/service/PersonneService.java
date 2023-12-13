@@ -8,6 +8,8 @@ public interface PersonneService {
 
    Integer save(PersonneDTO personneDTO);
 
+   void update(PersonneDTO personneDTO);
+
     PersonneDTO findById(Integer id);
 
     List<PersonneDTO> findAll();

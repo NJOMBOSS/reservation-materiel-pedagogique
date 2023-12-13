@@ -1,0 +1,33 @@
+###
+POST http://localhost:8080/api/materiels
+Content-Type: application/json
+
+{
+  "libelle": "Vidéo projecteur",
+  "quantite": 50,
+  "estEnEtat": true
+
+}
+
+###
+PUT http://localhost:8080/api/materiels/1
+Content-Type: application/json
+
+{
+"libelle": "Vidéo projecteur",
+"quantite": 70,
+"estEnEtat": true
+
+}
+
+###
+GET http://localhost:8080/api/materiels/
+Content-Type: application/json
+
+###
+GET http://localhost:8080/api/materiels/1
+Content-Type: application/json
+
+###
+DELETE http://localhost:8080/api/materiels/4
+Content-Type: application/json

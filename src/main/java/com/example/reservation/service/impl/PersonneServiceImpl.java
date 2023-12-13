@@ -37,6 +37,29 @@ public class PersonneServiceImpl implements PersonneService {
     }
 
     @Override
+    public void update(PersonneDTO personneDTO) {
+        Personne personne = PersonneDTO.toEntity(personneDTO);
+        Optional<Personne> existPersonne = personneRepository.findById(personne.getId());
+
+        if(existPersonne.isEmpty()){
+            throw new EntityNotFoundException("Cette personne n'existe pas !!!");
+        }
+
+        Personne existe = existPersonne.get();
+
+        existe.setNom(personne.getNom());
+        existe.setPrenom(personne.getPrenom());
+        existe.setDateNaissance(personne.getDateNaissance());
+        existe.setSexe(personne.getSexe());
+        existe.setFiliere(personne.getFiliere());
+        existe.setNiveau(personne.getNiveau());
+        existe.setRole(personne.getRole());
+
+        personneRepository.save(existe);
+
+    }
+
+    @Override
     public PersonneDTO findById(Integer id) {
         return personneRepository.findById(id)
                 .map(PersonneDTO::fromEntity)

@@ -2,6 +2,7 @@ package com.example.reservation.entite;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 import java.util.Set;
 
@@ -21,6 +22,7 @@ public class Materiel {
     private String libelle;
 
     private  int quantite;
+
 
     private boolean estEnEtat=true;
 

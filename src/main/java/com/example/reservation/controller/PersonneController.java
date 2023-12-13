@@ -1,5 +1,6 @@
 package com.example.reservation.controller;
 
+import com.example.reservation.dto.MaterielDTO;
 import com.example.reservation.dto.PersonneDTO;
 import com.example.reservation.service.PersonneService;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,13 @@ public class PersonneController {
         return  ResponseEntity.ok("La personne a été enregistrée avec succès");
     }
 
+    @PutMapping("/{personne-id}")
+    public ResponseEntity<String> update( @PathVariable("personne-id") Integer personneId,
+                                          @RequestBody PersonneDTO personneDTO){
+        personneDTO.setId(personneId);
+        personneService.update(personneDTO);
+        return  ResponseEntity.ok("La personne a été modifié avec succès");
+    }
 
     @GetMapping("/")
     public ResponseEntity<List<PersonneDTO>> findAll(){
