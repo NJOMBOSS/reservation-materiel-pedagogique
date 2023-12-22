@@ -1,8 +1,8 @@
 package com.example.reservation.entite;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.hibernate.annotations.Type;
 
 import java.util.Set;
 
@@ -19,10 +19,11 @@ public class Materiel {
     @Column(name = "id_materiel")
     private  int id;
 
+    @NotNull(message = "Le libellé est obligatoire")
     private String libelle;
 
+    @NotNull(message = "La quantité est obligatoire")
     private  int quantite;
-
 
     private boolean estEnEtat=true;
 

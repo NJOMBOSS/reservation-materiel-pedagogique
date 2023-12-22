@@ -4,14 +4,16 @@ import com.example.reservation.entite.Personne;
 import com.example.reservation.enums.TypePersonne;
 
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.validation.annotation.Validated;
 
 import java.time.LocalDate;
 
-
+@Validated
 @Builder
 @Getter
 @Setter
@@ -20,10 +22,13 @@ public class PersonneDTO {
 
     private  int id;
 
+    @NotNull(message = "Le nom est obligatoire")
     private String nom;
 
+    @NotNull(message = "Le prenom est obligatoire")
     private String prenom;
 
+    @NotNull(message = "La date naissance est obligatoire")
     private LocalDate dateNaissance;
 
     private char sexe;

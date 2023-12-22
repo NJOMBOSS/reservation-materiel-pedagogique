@@ -1,11 +1,14 @@
 package com.example.reservation.dto;
 
 import com.example.reservation.entite.Materiel;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.validation.annotation.Validated;
 
+@Validated
 @Builder
 @Getter
 @Setter
@@ -14,8 +17,10 @@ public class MaterielDTO {
 
     private  int id;
 
+    @NotNull(message = "Le libellé est obligatoire")
     private String libelle;
 
+    @NotNull(message = "La quantité est obligatoire")
     private  int quantite;
 
     private boolean estEnEtat;

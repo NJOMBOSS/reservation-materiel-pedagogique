@@ -1,4 +1,4 @@
-package com.example.reservation.service.impl;
+package com.example.reservation.service;
 
 import com.example.reservation.dto.MaterielDTO;
 import jakarta.persistence.criteria.CriteriaBuilder;

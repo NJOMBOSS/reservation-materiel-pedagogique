@@ -7,6 +7,7 @@ import com.example.reservation.repository.PersonneRepository;
 import com.example.reservation.service.PersonneService;
 import com.example.reservation.validators.ObjectsValidator;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ public class PersonneServiceImpl implements PersonneService {
 
 
     @Override
-    public Integer save(PersonneDTO personneDTO) {
+    public Integer save(@Valid PersonneDTO personneDTO) {
         validator.validate(personneDTO);
         Personne personne = PersonneDTO.toEntity(personneDTO);
         Optional<Personne> p = personneRepository.findByNomAndPrenomAndDateNaissance(personne.getNom(), personne.getPrenom(), personne.getDateNaissance());

@@ -2,8 +2,7 @@ package com.example.reservation.controller;
 
 
 import com.example.reservation.dto.MaterielDTO;
-import com.example.reservation.dto.PersonneDTO;
-import com.example.reservation.service.impl.MaterielService;
+import com.example.reservation.service.MaterielService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

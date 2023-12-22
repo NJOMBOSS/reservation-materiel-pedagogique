@@ -3,8 +3,10 @@ package com.example.reservation.service.impl;
 import com.example.reservation.dto.MaterielDTO;
 import com.example.reservation.entite.Materiel;
 import com.example.reservation.repository.MaterielRepository;
+import com.example.reservation.service.MaterielService;
 import com.example.reservation.validators.ObjectsValidator;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +16,13 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
-public class MaterielServiceImpl implements MaterielService{
+public class MaterielServiceImpl implements MaterielService {
 
     private final MaterielRepository materielRepository;
 
     private final ObjectsValidator<MaterielDTO> validator;
     @Override
-    public Integer save(MaterielDTO materielDTO) {
+    public Integer save(@Valid MaterielDTO materielDTO) {
         validator.validate(materielDTO);
         Materiel materiel = MaterielDTO.toEntity(materielDTO);
         Optional<Materiel> mat = materielRepository.findByLibelle(materiel.getLibelle());

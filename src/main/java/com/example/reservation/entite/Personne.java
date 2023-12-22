@@ -2,6 +2,7 @@ package com.example.reservation.entite;
 
 import com.example.reservation.enums.TypePersonne;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -20,10 +21,13 @@ public class Personne {
     @Column(name = "id_personne")
     private  int id;
 
+    @NotNull(message = "Le nom est obligatoire")
     private String nom;
 
+    @NotNull(message = "Le prenom est obligatoire")
     private String prenom;
 
+    @NotNull(message = "La date naissance est obligatoire")
     private LocalDate dateNaissance;
 
     private char sexe;

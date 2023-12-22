@@ -1,0 +1,37 @@
+###
+POST http://localhost:8080/api/reservations
+Content-Type: application/json
+
+{
+  "dateReservation": "2020-12-03",
+    "heureDebut": "16:00" ,
+    "heureFin": "17:00",
+    "personneId": 1,
+    "materielId": 2
+
+}
+
+###
+GET http://localhost:8080/api/reservations/
+Content-Type: application/json
+
+###
+GET http://localhost:8080/api/reservations/20
+Content-Type: application/json
+
+###
+PUT http://localhost:8080/api/reservations/9
+Content-Type: application/json
+
+{
+  "id": 9,
+  "dateReservation": "2023-11-11",
+  "heureDebut": "13:00:00",
+  "heureFin": "17:00:00",
+  "personneId": 1,
+  "materielId": 2
+}
+
+###
+DELETE http://localhost:8080/api/reservations/5
+Content-Type: application/json

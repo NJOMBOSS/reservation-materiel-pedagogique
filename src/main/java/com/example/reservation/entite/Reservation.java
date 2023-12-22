@@ -1,9 +1,14 @@
 package com.example.reservation.entite;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 
 @Builder
 @Getter
@@ -26,7 +31,13 @@ public class Reservation {
     @JoinColumn(name = "id_materiel")
     private Materiel materiel;
 
-    private LocalDateTime heureDebut;
+    @NotNull(message = "La date de réservation obligatoire")
+    private LocalDate dateReservation;
 
-    private LocalDateTime heureFin;
+    @NotNull(message = "L'heure de début obligatoire")
+    private LocalTime heureDebut;
+
+    @NotNull(message = "L'heure de fin  obligatoire")
+    private LocalTime heureFin;
+
 }
